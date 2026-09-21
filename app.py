@@ -111,10 +111,12 @@ async def init_db():
 
 # ===================== معالجات البوت =====================
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """أمر /start - سيتم توسيعه في المرحلة التالية"""
+    """أمر /start"""
+    import warehouse_bot
     await update.message.reply_text(
         "🌿 مرحبًا بك في بوت إدارة طلبات الشحنات.\n\n"
-        "📦 هذه النسخة قيد التطوير. سيتم إضافة زر 'طلب جديد' قريبًا."
+        "📦 اضغط 'طلب جديد' لإرسال طلب.",
+        reply_markup=warehouse_bot.MAIN_KEYBOARD
     )
 
 # ===================== تشغيل البوت =====================
@@ -124,8 +126,10 @@ def run_bot():
     asyncio.set_event_loop(loop)
     bot_app = Application.builder().token(config.BOT_TOKEN).build()
 
-    # (سيتم إضافة معالجات أخرى في المراحل التالية)
+    import warehouse_bot
+
     bot_app.add_handler(CommandHandler("start", start_command))
+    warehouse_bot.register_handlers(bot_app)
 
     logger.info("✅ البوت يعمل...")
     bot_app.run_polling(allowed_updates=Update.ALL_TYPES, stop_signals=None)
