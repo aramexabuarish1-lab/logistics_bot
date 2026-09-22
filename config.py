@@ -44,4 +44,4 @@ HIDE_AFTER_MINUTES = 15          # إخفاء الطلب المكتمل بعد 1
 NOT_FOUND_LIMIT = 50             # عدد الطلبات المعروضة في تبويب "لم يُعثر عليها"
 
 # ===================== رابط Mini App =====================
-MINI_APP_URL = "https://khcontrol41.github.io/logistics_admin/"
+MINI_APP_URL = "https://aramexabuarish1-lab.github.io/logistics_admin/"
